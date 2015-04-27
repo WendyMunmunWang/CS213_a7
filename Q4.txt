@@ -1,0 +1,32 @@
+Briefly describe your testing procedure in Q4.txt and describe how you used the values of 
+the wait counters and items histogram to understand the execution of your program
+
+testing procedure:
+
+Producer wait: 282626
+Consumer wait: 250802
+items 0 count 47
+items 1 count 64
+items 2 count 34
+items 3 count 34
+items 4 count 34
+items 5 count 40
+items 6 count 41
+items 7 count 36
+items 8 count 36
+items 9 count 226
+items 10 count 208
+
+I created two global variables called producer_wait_counts and consumer_wait_counts. When
+the producer and consumers have to wait until the condition is met, the waiting count will
+be increased. So at the end I am able to count how many times for both consumer and producer 
+wait. And both of the waiting times should be approximately equal. As you could see above that 
+the producer wait and consumer wait are approximately the same.
+
+In addition, there is a count value for each of the item. So whenever the item is produced or
+consumed, the count will be incremented. Since the NUM_ITERATIONS is fixed to be 200, and we 
+have two producers and two consumers. So the total counts would be approximately 200*4 = 800. And 
+the above output matches the hypothesis.
+
+
+

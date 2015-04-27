@@ -1,0 +1,28 @@
+quyen Ly@User ~/cs213/a7/code
+$ time ./sRead 10
+10
+
+real    0m0.391s
+user    0m0.280s
+sys     0m0.015s
+
+
+quyen Ly@User ~/cs213/a7/code
+$ time ./sRead 100
+100
+
+real    0m1.641s
+user    0m1.622s
+sys     0m0.031s
+
+quyen Ly@User ~/cs213/a7/code
+$ time ./sRead 1000
+1000
+
+real    0m15.794s
+user    0m15.724s
+sys     0m0.031s
+
+Observation: The number of blocks increases, the time will increases.
+
+Explanation: The CPU reads the blocks sequentially, so the more blocks there are, the more time it takes.

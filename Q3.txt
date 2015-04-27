@@ -1,0 +1,79 @@
+Evaluate this version as you did the other two.
+
+Compare their performance and record your data. Compare both the elapsed time (as you have
+previous) and the system time of aRead and tRead. If there is a significant difference note it.
+
+Record your data, observations, and explanation in the file Q3.txt. 
+
+Record data:
+
+z8w8@bowen:a7$ time ./sRead 10
+10
+
+real	0m0.113s
+user	0m0.108s
+sys	0m0.000s
+z8w8@bowen:a7$ time ./sRead 100
+100
+
+real	0m1.083s
+user	0m1.080s
+sys	0m0.000s
+z8w8@bowen:a7$ time ./sRead 1000
+1000
+
+real	0m10.736s
+user	0m10.728s
+sys	0m0.000s
+z8w8@bowen:a7$ time ./aRead 10
+10
+
+real	0m0.014s
+user	0m0.008s
+sys	0m0.004s
+z8w8@bowen:a7$ time ./aRead 100
+100
+
+real	0m0.014s
+user	0m0.008s
+sys	0m0.004s
+z8w8@bowen:a7$ time ./aRead 1000
+1000
+
+real	0m0.015s
+user	0m0.016s
+sys	0m0.000s
+z8w8@bowen:a7$ time ./tRead 10
+10
+
+real	0m0.021s
+user	0m0.000s
+sys	0m0.016s
+z8w8@bowen:a7$ time ./tRead 100
+100
+
+real	0m0.083s
+user	0m0.012s
+sys	0m0.072s
+z8w8@bowen:a7$ time ./tRead 1000
+1000
+
+real	0m0.721s
+user	0m0.012s
+sys	0m0.704s
+
+Observation
+
+I ran three of this files with the same computer and server. 
+
+As we can see, in tRead, as the inputs gets bigger and bigger, the time length is 
+bigger and bigger as well. 
+If we look at it in another prospective. 
+For input 10,  time(aRead) < time(tRead) <time(sRead)
+For input 100, time(aRead) < time(tRead) <time(sRead)
+For input 1000,time(aRead) < time(tRead) <time(sRead)
+
+Explanation:
+It is reasonable that sRead is the slowest, and aRead is faster than tRead. Because for threads, 
+it needs to spin lock, check conditions, and join the threads at the end. So it will take more 
+time than for aRead. 

@@ -1,0 +1,57 @@
+
+z8w8@bowen:a7$ time ./sRead 10
+10
+
+real	0m0.113s
+user	0m0.108s
+sys	0m0.000s
+z8w8@bowen:a7$ time ./sRead 100
+100
+
+real	0m1.083s
+user	0m1.080s
+sys	0m0.000s
+z8w8@bowen:a7$ time ./sRead 1000
+1000
+
+real	0m10.736s
+user	0m10.728s
+sys	0m0.000s
+z8w8@bowen:a7$ time ./aRead 10
+10
+
+real	0m0.014s
+user	0m0.008s
+sys	0m0.004s
+z8w8@bowen:a7$ time ./aRead 100
+100
+
+real	0m0.014s
+user	0m0.008s
+sys	0m0.004s
+z8w8@bowen:a7$ time ./aRead 1000
+1000
+
+real	0m0.015s
+user	0m0.016s
+sys	0m0.000s
+z8w8@bowen:a7$ time ./tRead 10
+10
+
+real	0m0.021s
+user	0m0.000s
+sys	0m0.016s
+
+Observations: 
+From the data, we can see that for all the cases, as the number of blocks increase, the time increases. 
+If we paired up the data of aRead and sRead within the same case(the same blockno), we can see that the time is shorter 
+in aRead than in sRead.
+
+Explanation: 
+In sRead file, we can see that the implementation in interuptServiceRoutine is empty, and in the 
+run function, it actually reads the block one by one and then handles the data one by one. CPU 
+waits for the reading to be completed and doing nothing during the waiting period. 
+
+However, for the aRead file, there is implementation in the InteruptServiceRoutine. The InteruptServiceRoutine 
+will complete the data and handle the data. While CPU is waiting for it, it is doing other stuff. In this step, 
+it is faster than sRead because it is more efficient.
